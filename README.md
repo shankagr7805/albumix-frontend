@@ -1,131 +1,120 @@
-# Mantis Free React Material UI Dashboard Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Download%20Mantis%20React%20-%20The%20professional%20Material%20designed%20React%20Admin%20Dashboard%20Template%20&url=https://mantisdashboard.io&via=codedthemes&hashtags=reactjs,webdev,developers,javascript)
+# 📸 Albumix Frontend
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Price](https://img.shields.io/badge/price-FREE-0098f7.svg)](https://github.com/codedthemes/mantis-free-react-admin-template/blob/main/LICENSE)
-[![GitHub package version](https://img.shields.io/github/package-json/v/codedthemes/mantis-free-react-admin-template)](https://github.com/codedthemes/mantis-free-react-admin-template/)
+Albumix Frontend is a modern, responsive React-based web application that allows users to manage photo albums, upload images to Cloudinary, and securely interact with a Spring Boot backend using JWT authentication.
 
-Mantis is a free and open source React redux dashboard template made using the Material UI React component library with aim of flexibility and better customizability.
+This project is designed with **scalability, clean UI, and resume-quality architecture** in mind.
 
-### Name Derived From Nature
+---
 
-Mantis Logo is inspired from the insect name - 'Mantises' as they have triangular heads with flexible Necks. Also, the name is derived from two popular UI frameworks, Material UI and Ant Design (M-Ant-is).
+## 🚀 Features
 
-Mantis has Ant Design principal on top of the MAterial UI React component library.
+### 🔐 Authentication & Security
+- JWT-based authentication
+- Session-based login (sessionStorage)
+- Secure API calls with Authorization headers
+- Auto logout on browser close
 
-:star: :star: :star: Support us by giving star (Top right of this page) if you like the theme :star: :star: :star:
+### 📁 Album Management
+- Create, view, update, and delete albums
+- Upload multiple photos per album
+- View photos with thumbnails
+- Download photos securely
 
-![mantis-free-react-dashboard-template.jpg](https://mantisdashboard.io/adv-banner-images/og-social-v1.1.0.png)
+### ☁️ Cloudinary Integration
+- Upload images directly to Cloudinary via backend APIs
+- Multiple image upload support
+- Cloudinary gallery view
+- Delete previously uploaded images
+- Upload progress bar
+- File size validation on frontend
 
-The [Pro version](https://mantisdashboard.io) of Mantis react template includes features such as TypeScript, apps, authentication methods (i.e. JWT, Auth0, Firebase), advance components, form plugins, layouts, widgets, and more.
+### 👤 User Profile
+- View profile details
+- Change password
+- Delete account
+- Role-based UI rendering
 
-| [Mantis Free](https://mantisdashboard.io/free) | [Mantis Pro](https://mantisdashboard.io)                                         |
-| ---------------------------------------------- | :------------------------------------------------------------------------------- |
-| **7** Demo pages                               | **85+** Demo pages                                                               |
-| -                                              | ✓ Multi-language                                                                 |
-| -                                              | ✓ Dark/Light Mode 🌓                                                             |
-| -                                              | ✓ TypeScript version                                                             |
-| -                                              | ✓ Design files (Figma)                                                           |
-| -                                              | ✓ Multiple color options                                                         |
-| -                                              | ✓ RTL                                                                            |
-| -                                              | ✓ JWT, Firebase, Auth0, AWS authentication                                       |
-| -                                              | ✓ [More components](https://mantisdashboard.io/components-overview/autocomplete) |
-| ✓ MIT License                                  | ✓ [Pro License](https://mui.com/store/license/)                                  |
+### 🎨 UI / UX
+- Dark / Light mode toggle
+- Material UI (MUI) based modern design
+- Responsive layout (desktop + mobile)
+- Sidebar navigation with breadcrumbs
+- Success & error alerts for user actions
 
-## Why Mantis?
+---
 
-Mantis offers everything needed to build an advanced dashboard application. In the initial release, we included following high-end features,
+## 🛠 Tech Stack
 
-- Support React18.
-- Professional user interface.
-- Material UI React components.
-- Fully responsive, all modern browser supported.
-- Easy to use code structure
-- Flexible & high-Performance code
-- Simple documentation
+### Frontend
+- **React**
+- **Material UI (MUI)**
+- **Axios**
+- **Redux**
+- **React Router**
 
-## Free Mantis React version
+### Backend (Integrated)
+- Spring Boot
+- JWT Authentication
+- MySQL
+- Cloudinary (Media storage)
 
-#### Preview
+---
 
-- [Demo](https://mantisdashboard.io/free)
+## 📂 Project Structure
 
-#### Download
-
-- [Download from GitHub](https://github.com/codedthemes/mantis-free-react-admin-template)
-
-## Mantis Pro version
-
-#### Preview
-
-- [Demo](https://mantisdashboard.io)
-
-#### Purchase
-
-- [Buy now](https://mui.com/store/items/mantis-react-admin-dashboard-template/)
-
-## Table of contents
-
-- [Getting started](#getting-started)
-- [Documentation](#documentation)
-- [Technology stack](#technology-stack)
-- [Author](#author)
-- [Issues?](#issues)
-- [License](#license)
-- [More products](#more-free-react-material-admin-templates)
-- [Follow us](#follow-us)
-
-## Getting started
-
-Clone from GitHub
-
-```
-git clone https://github.com/codedthemes/mantis-free-react-admin-template.git
-yarn
-yarn start
+```text
+albumix-frontend/
+│
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── layout/
+│   ├── menu-items/
+│   ├── store/
+│   ├── client/
+│   └── routes/
+│
+├── .env
+├── .gitignore
+├── package.json
+├── package-lock.json
+└── README.md
 ```
 
-## Documentation
+---
 
-[Mantis documentation](https://codedthemes.gitbook.io/mantis/) helps you out in all aspects from Installation to deployment.
+## ▶️ Running the Project Locally
 
-## Technology stack
+### 1️⃣ Install Dependencies
 
-- [Material UI V5](https://mui.com/core/)
-- Built with React Hooks API.
-- Redux & React context API for state management.
-- Redux toolkit.
-- React Router for navigation routing.
-- Support for react-script.
-- Code splitting.
-- CSS-in-JS.
+```npm install```
 
-## Author
+### 2️⃣ Start Development Server
 
-Mantis is managed by team [CodedThemes](https://codedthemes.com).
+```npm start```
 
-## Issues
+---
 
-Please generate a [GitHub issue](https://github.com/codedthemes/mantis-free-react-admin-template/issues) if you found a bug in any version. We are try our best to resolve the issue.
+## 🔗 Backend Dependency
 
-## License
+- This frontend requires the Albumix Spring Boot Backend to be running.
+- Backend should expose APIs under:
+```/api/v2/**```
 
-- Licensed under [MIT](https://github.com/codedthemes/datta-able-bootstrap-dashboard/blob/master/LICENSE)
+---
 
-## Checkout free React Material admin dashboard templates
+## ☁️ Cloudinary Flow (Frontend Perspective)
+- User selects image(s)
+- Frontend validates file size & type
+- Image sent to backend using multipart/form-data
+- Backend uploads to Cloudinary
+- Cloudinary URL & publicId returned
+- User can view or delete uploaded image
 
-- [Free Materially](https://codedthemes.com/item/materially-free-reactjs-admin-template/)
-- [Free Berry](https://mui.com/store/items/berry-react-material-admin-free/)
+---
 
-## Checkout premium React Material admin dashboard templates
+## 👨‍💻 Author
 
-- [Materially](https://codedthemes.com/item/materially-reactjs-admin-dashboard/)
-- [Berry](https://mui.com/store/items/berry-react-material-admin/)
-
-## Follow us
-
-- Website [https://mantisdashboard.io](https://mantisdashboard.io)
-- Blog [https://blog.mantisdashboard.io](https://blog.mantisdashboard.io)
-- CodedThemes [https://codedthemes.com](https://codedthemes.com)
-- Dribbble [https://dribbble.com/codedthemes](https://dribbble.com/codedthemes)
-- Facebook [https://www.facebook.com/codedthemes](https://www.facebook.com/codedthemes)
-- Twitter [https://twitter.com/codedthemes](https://twitter.com/codedthemes)
+Shankar Kumar
+Full Stack Developer
