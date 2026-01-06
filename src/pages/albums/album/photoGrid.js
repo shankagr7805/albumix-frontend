@@ -30,10 +30,16 @@ const PhotoGrid = () => {
   };
 
   useEffect(() => {
-    fetchGetDataWithAuth('/albums/' + album_id).then(res => {
-      setAlbumInfo(res.data);
-      setPhotos(res.data.photos); // direct photos array
-    });
+    if (!album_id) return; // ⛔ STOP if id missing
+
+    fetchGetDataWithAuth("/albums/"+album_id)
+      .then(res => {
+        setAlbumInfo(res.data);
+        setPhotos(res.data.photos || []);
+      })
+      .catch(err => {
+        console.error('Album fetch failed', err);
+      });
   }, [album_id]);    //* Dependency array ensures useEffect runs when album_id changes
   return (
     <div>
