@@ -53,9 +53,14 @@ const Profile = () => {
 
   // fetch profile once
   useEffect(() => {
+    const token = sessionStorage.getItem('token');
+    if (!token) return; 
     fetchGetDataWithAuth('/auth/profile')
       .then((res) => setProfile(res.data))
-      .catch(() => setProfile(null));
+      .catch(() => {
+        sessionStorage.clear();
+        window.location.href = '/login';
+      });
   }, []);
 
   const handleToggle = () => setOpen((prev) => !prev);
