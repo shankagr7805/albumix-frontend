@@ -7,7 +7,7 @@ const cloudinary = {
   children: [
     {
       id: 'cloudinary-upload',
-      title: 'Upload Photo',
+      title: 'Cloud upload',
       type: 'item',
       url: '/cloudinary/upload',
       icon: CloudUploadOutlined
