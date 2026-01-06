@@ -1,4 +1,11 @@
 import axios from 'axios';
+/**
+ * =========================================
+ * Base API URL (ENV based)
+ * =========================================
+ */
+const API_BASE_URL =
+  process.env.REACT_APP_API_URL || 'http://localhost:8080';
 
 /**
  * =========================================
@@ -6,7 +13,7 @@ import axios from 'axios';
  * =========================================
  */
 const api = axios.create({
-  baseURL: '/api/v2',
+  baseURL: `${API_BASE_URL}/api/v2`,
   timeout: 15000
 });
 
