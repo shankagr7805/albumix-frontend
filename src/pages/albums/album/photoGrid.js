@@ -10,6 +10,7 @@ import { Stack, IconButton } from '@mui/material';
 import VisibilityOutlined from '@mui/icons-material/VisibilityOutlined';
 import EditOutlined from '@mui/icons-material/EditOutlined';
 import DownloadOutlined from '@mui/icons-material/DownloadOutlined';
+import CloseOutlined from '@mui/icons-material/CloseOutlined';
 import DeleteOutlineOutlined from '@mui/icons-material/DeleteOutlineOutlined';
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -69,7 +70,7 @@ const PhotoGrid = () => {
         const disposition = response.headers.get('Content-Disposition');
         const match = /filename="(.*)"/.exec(disposition);
         const filename = match ? match[1] : 'downloadFile';
-        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const url = window.URL.createObjectURL(response.data);
         const link = document.createElement('a');
         link.href = url;
         link.setAttribute('download', filename);
@@ -131,8 +132,30 @@ const PhotoGrid = () => {
         className={classes.modal}>    
         <div className={classes.modalMain}>
           <img src={'data:image/jpeg;base64,' + PhotoContent} alt={PhotoDesc} style={{ width: '100%', height: 'auto', }} />
-          <Button onClick={() => handleDownload(DownloadLink)}>  Download Photo </Button>
-          <Button onClick={handleClose} className={classes.closeButton}>Close</Button>
+          <Stack
+            direction="row"
+            spacing={2}
+            justifyContent="flex-end"
+            sx={{ mt: 2 }}
+          >
+            <Button
+              variant="contained"
+              color="success"
+              startIcon={<DownloadOutlined />}
+              onClick={() => handleDownload(DownloadLink)}
+            >
+              Download
+            </Button>
+
+            <Button
+              variant="outlined"
+              color="error"
+              startIcon={<CloseOutlined />}
+              onClick={handleClose}
+            >
+              Close
+            </Button>
+          </Stack>
         </div>
       </Modal>
       <Typography variant="h4" gutterBottom> {albumInfo.name} </Typography>
