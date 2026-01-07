@@ -1,19 +1,10 @@
 import { useState } from 'react';
-import {
-  Box,
-  Button,
-  Typography,
-  Card,
-  CardContent,
-  Stack,
-  Alert,
-  LinearProgress
-} from '@mui/material';
+import { fetchPostFileUploadWithAuth } from 'client/client';
+import { Box, Button, Typography, Card, CardContent, Stack, Alert, LinearProgress } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
 
@@ -59,22 +50,20 @@ const CloudinaryUpload = () => {
       const token = sessionStorage.getItem('token');
 
       for (let i = 0; i < files.length; i++) {
-        const formData = new FormData();
-        formData.append('file', files[i]);
+      const formData = new FormData();
+      formData.append("file", files[i]);
 
-        await axios.post('/api/v2/cloudinary/upload', formData, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'multipart/form-data'
-          },
-          onUploadProgress: (event) => {
-            const percent = Math.round(
-              ((i + event.loaded / event.total) / files.length) * 100
-            );
-            setProgress(percent);
-          }
-        });
-      }
+      await fetchPostFileUploadWithAuth('/cloudinary/upload', formData, token, 
+        (event) => {
+          if (!event.total) return;
+
+          const percent = Math.round(
+            ((i + event.loaded / event.total) / files.length) * 100
+          );
+          setProgress(percent);
+        }
+      );
+}
 
       setSuccess('Images uploaded successfully 🎉');
 
@@ -117,14 +106,7 @@ const CloudinaryUpload = () => {
               textAlign: 'center'
             }}
           >
-            <input
-              type="file"
-              accept="image/*"
-              multiple
-              hidden
-              id="upload-input"
-              onChange={handleFileChange}
-            />
+            <input type="file" accept="image/*" multiple hidden id="upload-input" onChange={handleFileChange} />
             <label htmlFor="upload-input">
               <Button variant="outlined" component="span">
                 Choose Images
@@ -174,13 +156,7 @@ const CloudinaryUpload = () => {
             </Alert>
           )}
 
-          <Button
-            variant="contained"
-            fullWidth
-            size="large"
-            disabled={uploading}
-            onClick={handleUpload}
-          >
+          <Button variant="contained" fullWidth size="large" disabled={uploading} onClick={handleUpload}>
             {uploading ? 'Uploading...' : 'Upload Images'}
           </Button>
         </Stack>
