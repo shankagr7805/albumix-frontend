@@ -1,7 +1,6 @@
 # 📸 Albumix Frontend
 
 Albumix Frontend is a modern, responsive React-based web application that allows users to manage photo albums, upload images to Cloudinary, and securely interact with a Spring Boot backend using JWT authentication.
-
 This project is designed with **scalability, clean UI, and resume-quality architecture** in mind.
 
 ---
