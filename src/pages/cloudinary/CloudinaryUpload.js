@@ -50,20 +50,16 @@ const CloudinaryUpload = () => {
       const token = sessionStorage.getItem('token');
 
       for (let i = 0; i < files.length; i++) {
-      const formData = new FormData();
-      formData.append("file", files[i]);
+        const formData = new FormData();
+        formData.append('file', files[i]);
 
-      await fetchPostFileUploadWithAuth('/cloudinary/upload', formData, token, 
-        (event) => {
+        await fetchPostFileUploadWithAuth('/cloudinary/upload', formData, token, (event) => {
           if (!event.total) return;
 
-          const percent = Math.round(
-            ((i + event.loaded / event.total) / files.length) * 100
-          );
+          const percent = Math.round(((i + event.loaded / event.total) / files.length) * 100);
           setProgress(percent);
-        }
-      );
-}
+        });
+      }
 
       setSuccess('Images uploaded successfully 🎉');
 

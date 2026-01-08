@@ -2,34 +2,35 @@ import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useEffect } from 'react';
-import {fetchPostDataWithAuth} from 'client/client';
+import { fetchPostDataWithAuth } from 'client/client';
 import { useNavigate } from 'react-router-dom';
 
 const AddAlbumForm = () => {
-    const navigate = useNavigate();
-    useEffect(() => {
-        const isLoggedIn = sessionStorage.getItem('token');
-        if (!isLoggedIn) {
-          navigate('/login');
-          window.location.reload()
-        } 
-      }, []); 
+  const navigate = useNavigate();
+  useEffect(() => {
+    const isLoggedIn = sessionStorage.getItem('token');
+    if (!isLoggedIn) {
+      navigate('/login');
+      window.location.reload();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     name: '',
-    description: '',
-    });
+    description: ''
+  });
 
   const [errors, setErrors] = useState({
     name: '',
-    description: '',
+    description: ''
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: value
     }));
   };
 
@@ -54,18 +55,18 @@ const AddAlbumForm = () => {
 
     // If form is valid, you can proceed with further actions
     if (isValid) {
-        const payload = {
-            name: formData.name,
-            description: formData.description,
-          };
+      const payload = {
+        name: formData.name,
+        description: formData.description
+      };
 
-      fetchPostDataWithAuth("/albums/add",payload)
-      .then((response) => {
-        console.log(response)      
-        
-      }) .catch((error) => {
+      fetchPostDataWithAuth('/albums/add', payload)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
           console.error('Login error:', error);
-    });
+        });
       console.log('Form submitted:');
       navigate('/');
     }

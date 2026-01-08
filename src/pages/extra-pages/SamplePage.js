@@ -12,19 +12,18 @@ const SamplePage = () => {
 
   useEffect(() => {
     const isLoggedin = sessionStorage.getItem('token');
-    if(!isLoggedin) {
+    if (!isLoggedin) {
       navigate('/login');
-      window.location.reload()
-
+      window.location.reload();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return(
-  <MainCard title="Albums">
-    <Typography variant="body2">
-      Albums
-    </Typography>
-  </MainCard>
-)};
+  return (
+    <MainCard title="Albums">
+      <Typography variant="body2">Albums</Typography>
+    </MainCard>
+  );
+};
 
 export default SamplePage;

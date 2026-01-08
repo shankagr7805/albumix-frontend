@@ -5,13 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import {
-  Chip,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Typography
-} from '@mui/material';
+import { Chip, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
 
 // project import
 import { activeItem } from 'store/reducers/menu';
@@ -38,9 +32,7 @@ const NavItem = ({ item, level }) => {
     const itemTarget = item.target ? '_blank' : '_self';
 
     listItemProps = {
-      component: forwardRef((props, ref) => (
-        <Link ref={ref} {...props} to={item.url} target={itemTarget} />
-      ))
+      component: forwardRef((props, ref) => <Link ref={ref} {...props} to={item.url} target={itemTarget} />)
     };
 
     if (item.external) {
@@ -79,9 +71,7 @@ const NavItem = ({ item, level }) => {
   };
 
   const Icon = item.icon;
-  const itemIcon = Icon ? (
-    <Icon style={{ fontSize: drawerOpen ? '1rem' : '1.25rem' }} />
-  ) : null;
+  const itemIcon = Icon ? <Icon style={{ fontSize: drawerOpen ? '1rem' : '1.25rem' }} /> : null;
 
   return (
     <ListItemButton
@@ -97,30 +87,18 @@ const NavItem = ({ item, level }) => {
 
         /* ---------- HOVER ---------- */
         '&:hover': {
-          bgcolor:
-            theme.palette.mode === 'dark'
-              ? 'rgba(255,255,255,0.08)'
-              : theme.palette.grey[100],
-          color:
-            theme.palette.mode === 'dark'
-              ? theme.palette.common.white
-              : theme.palette.primary.main
+          bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : theme.palette.grey[100],
+          color: theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.primary.main
         },
 
         /* ---------- SELECTED ---------- */
         '&.Mui-selected': {
-          bgcolor:
-            theme.palette.mode === 'dark'
-              ? 'rgba(255,255,255,0.12)'
-              : theme.palette.primary.lighter,
+          bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.12)' : theme.palette.primary.lighter,
           borderRight: `3px solid ${theme.palette.primary.main}`,
 
           '& .MuiTypography-root': {
             fontWeight: 600,
-            color:
-              theme.palette.mode === 'dark'
-                ? theme.palette.common.white
-                : theme.palette.primary.main
+            color: theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.primary.main
           },
 
           '& .MuiListItemIcon-root': {
@@ -128,10 +106,7 @@ const NavItem = ({ item, level }) => {
           },
 
           '&:hover': {
-            bgcolor:
-              theme.palette.mode === 'dark'
-                ? 'rgba(255,255,255,0.16)'
-                : theme.palette.primary.lighter
+            bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.16)' : theme.palette.primary.lighter
           }
         }
       }}
@@ -146,8 +121,8 @@ const NavItem = ({ item, level }) => {
             color: isSelected
               ? theme.palette.primary.main
               : theme.palette.mode === 'dark'
-                ? theme.palette.grey[400]
-                : theme.palette.grey[700]
+              ? theme.palette.grey[400]
+              : theme.palette.grey[700]
           }}
         >
           {itemIcon}
@@ -166,8 +141,8 @@ const NavItem = ({ item, level }) => {
                     ? theme.palette.common.white
                     : theme.palette.primary.main
                   : theme.palette.mode === 'dark'
-                    ? theme.palette.grey[300]
-                    : theme.palette.text.primary
+                  ? theme.palette.grey[300]
+                  : theme.palette.text.primary
               }}
             >
               {item.title}
@@ -177,12 +152,7 @@ const NavItem = ({ item, level }) => {
       )}
 
       {(drawerOpen || level !== 1) && item.chip && (
-        <Chip
-          color={item.chip.color}
-          variant={item.chip.variant}
-          size={item.chip.size}
-          label={item.chip.label}
-        />
+        <Chip color={item.chip.color} variant={item.chip.variant} size={item.chip.size} label={item.chip.label} />
       )}
     </ListItemButton>
   );

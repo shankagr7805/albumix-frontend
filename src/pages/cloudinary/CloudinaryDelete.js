@@ -7,15 +7,11 @@ const CloudinaryDelete = ({ publicId, onDelete }) => {
   const [error, setError] = useState('');
 
   const handleDelete = async () => {
-    const confirm = window.confirm(
-      'Are you sure you want to delete this image?'
-    );
+    const confirm = window.confirm('Are you sure you want to delete this image?');
     if (!confirm) return;
 
     try {
-      await fetchDeleteDataWithAuth(
-        `/cloudinary/delete?publicId=${publicId}`
-      );
+      await fetchDeleteDataWithAuth(`/cloudinary/delete?publicId=${publicId}`);
       setSuccess('🗑 Image deleted successfully');
       onDelete();
     } catch (err) {
@@ -28,12 +24,7 @@ const CloudinaryDelete = ({ publicId, onDelete }) => {
       {success && <Alert severity="success">{success}</Alert>}
       {error && <Alert severity="error">{error}</Alert>}
 
-      <Button
-        variant="outlined"
-        color="error"
-        onClick={handleDelete}
-        sx={{ mt: 1 }}
-      >
+      <Button variant="outlined" color="error" onClick={handleDelete} sx={{ mt: 1 }}>
         Delete Image
       </Button>
     </>

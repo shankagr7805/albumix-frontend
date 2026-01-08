@@ -8,21 +8,19 @@ const Header = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const id = queryParams.get('id');
-  
+
   const handleDelete = () => {
-    const isConfirmed = window.confirm('Are you sure you want to delete the album ?')
-    if(isConfirmed) {
+    const isConfirmed = window.confirm('Are you sure you want to delete the album ?');
+    if (isConfirmed) {
       console.log('Item deleted');
-      fetchDeleteDataWithAuth('/albums/'+id+'/delete')
-      .then(res => {
+      fetchDeleteDataWithAuth('/albums/' + id + '/delete').then((res) => {
         console.log(res);
-        window.location.href = '/'; 
-      })   
+        window.location.href = '/';
+      });
     } else {
       console.log('Delete operation cancelled');
-      
     }
-  }
+  };
 
   return (
     <AppBar position="static">
@@ -40,7 +38,7 @@ const Header = () => {
         >
           Edit Album
         </Button>
-  
+
         <Button
           component={Link}
           to={`/album/upload?id=${id}`}

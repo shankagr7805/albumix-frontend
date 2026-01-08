@@ -78,11 +78,11 @@ const MainRoutes = {
     },
     {
       path: '/cloudinary/upload',
-      element: <CloudinaryUploadPage />,
+      element: <CloudinaryUploadPage />
     },
     {
       path: '/cloudinary/gallery',
-      element: <CloudinaryGalleryPage />,
+      element: <CloudinaryGalleryPage />
     }
   ]
 };

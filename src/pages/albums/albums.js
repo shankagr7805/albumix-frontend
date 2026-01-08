@@ -43,10 +43,7 @@ const AlbumDynamicGridPage = () => {
 
         return (
           <Grid item key={data.id} xs={12} sm={6} md={4} lg={3}>
-            <Link
-              to={`/album/show?id=${data.id}`}
-              style={{ textDecoration: 'none' }}
-            >
+            <Link to={`/album/show?id=${data.id}`} style={{ textDecoration: 'none' }}>
               <Card
                 sx={{
                   height: 220,
@@ -61,8 +58,7 @@ const AlbumDynamicGridPage = () => {
                     content: '""',
                     position: 'absolute',
                     inset: 0,
-                    background:
-                      'linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.45))'
+                    background: 'linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.45))'
                   },
                   '&:hover': {
                     transform: 'translateY(-6px)',
@@ -81,17 +77,11 @@ const AlbumDynamicGridPage = () => {
                     textAlign: 'center'
                   }}
                 >
-                  <Typography
-                    variant="h5"
-                    sx={{ fontWeight: 700, letterSpacing: 0.3 }}
-                  >
+                  <Typography variant="h5" sx={{ fontWeight: 700, letterSpacing: 0.3 }}>
                     {data.name}
                   </Typography>
 
-                  <Typography
-                    variant="body2"
-                    sx={{ opacity: 0.85, mt: 1 }}
-                  >
+                  <Typography variant="body2" sx={{ opacity: 0.85, mt: 1 }}>
                     {data.description}
                   </Typography>
                 </CardContent>

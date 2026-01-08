@@ -1,15 +1,7 @@
 import { useEffect, useState } from 'react';
-import {
-  Box,
-  TextField,
-  Button,
-  Stack,
-  Typography,
-  CircularProgress,
-  Alert
-} from '@mui/material';
+import { Box, TextField, Button, Stack, Typography, CircularProgress, Alert } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { fetchGetDataWithAuth, fetchPutDataWithAuth} from 'client/client';
+import { fetchGetDataWithAuth, fetchPutDataWithAuth } from 'client/client';
 import MainCard from 'components/MainCard';
 
 const EditProfile = () => {
@@ -31,6 +23,7 @@ const EditProfile = () => {
         setError('Failed to load profile');
       })
       .finally(() => setLoading(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = async () => {
@@ -78,12 +71,7 @@ const EditProfile = () => {
         {error && <Alert severity="error">{error}</Alert>}
 
         {/* EMAIL (READ ONLY) */}
-        <TextField
-          label="Email"
-          value={email}
-          fullWidth
-          disabled
-        />
+        <TextField label="Email" value={email} fullWidth disabled />
 
         {/* PASSWORD */}
         <TextField
@@ -95,13 +83,7 @@ const EditProfile = () => {
           helperText="Minimum 6 characters"
         />
 
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleSubmit}
-          disabled={saving}
-          sx={{ mt: 1 }}
-        >
+        <Button variant="contained" color="primary" onClick={handleSubmit} disabled={saving} sx={{ mt: 1 }}>
           {saving ? 'Saving...' : 'Save Changes'}
         </Button>
       </Stack>

@@ -20,9 +20,7 @@ const Logo = () => {
         sx={{
           height: 32,
           width: 'auto',
-          filter: theme.palette.mode === 'dark'
-            ? 'brightness(1.15)'
-            : 'none'
+          filter: theme.palette.mode === 'dark' ? 'brightness(1.15)' : 'none'
         }}
       />
 
@@ -31,10 +29,7 @@ const Logo = () => {
         sx={{
           fontWeight: 800,
           letterSpacing: 0.5,
-          color:
-            theme.palette.mode === 'dark'
-              ? theme.palette.grey[100]
-              : theme.palette.grey[900],
+          color: theme.palette.mode === 'dark' ? theme.palette.grey[100] : theme.palette.grey[900],
           lineHeight: 1
         }}
       >

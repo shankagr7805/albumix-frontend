@@ -8,16 +8,19 @@ const icons = {
 };
 const isLoginEnabled = sessionStorage.getItem('token');
 
-const caseLogin = [{
-  id: 'logout1',
-  title: 'Logout',
-  type: 'item',
-  onClick: logout,
-  icon: icons.LogoutOutlined,
-  target: true
-}]
+const caseLogin = [
+  {
+    id: 'logout1',
+    title: 'Logout',
+    type: 'item',
+    onClick: logout,
+    icon: icons.LogoutOutlined,
+    target: true
+  }
+];
 
-const caseLogout = [{
+const caseLogout = [
+  {
     id: 'Login',
     title: 'Login',
     type: 'item',
@@ -33,16 +36,12 @@ const caseLogout = [{
     icon: icons.ProfileOutlined,
     target: true
   }
-]
+];
 const auth = {
   id: 'authentication',
   title: 'Authentication',
   type: 'group',
-  children: [
-    isLoginEnabled && caseLogin[0],
-    !isLoginEnabled && caseLogout[0],
-    !isLoginEnabled && caseLogout[1]
-  ].filter(Boolean) // Remove falsy values (pages with condition false)
+  children: [isLoginEnabled && caseLogin[0], !isLoginEnabled && caseLogout[0], !isLoginEnabled && caseLogout[1]].filter(Boolean) // Remove falsy values (pages with condition false)
 };
 
 export default auth;

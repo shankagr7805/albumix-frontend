@@ -4,8 +4,7 @@ import axios from 'axios';
  * Base API URL (ENV based)
  * =========================================
  */
-const API_BASE_URL =
-  process.env.REACT_APP_API_URL || 'http://localhost:8080';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
 
 /**
  * =========================================
@@ -39,7 +38,6 @@ const fetchGetData = (uri) => {
   });
 };
 
-
 /**
  * =========================================
  * POST (public)
@@ -58,12 +56,10 @@ const fetchPostData = (uri, payload) => {
  * =========================================
  */
 const fetchGetDataWithAuth = (uri) => {
-  return api
-    .get(uri, { headers: authHeader() })
-    .catch((error) => {
-      console.error('AUTH GET error:', uri, error.message);
-      throw error;
-    });
+  return api.get(uri, { headers: authHeader() }).catch((error) => {
+    console.error('AUTH GET error:', uri, error.message);
+    throw error;
+  });
 };
 
 /**
@@ -110,12 +106,10 @@ const fetchPutDataWithAuth = (uri, payload) => {
  * =========================================
  */
 const fetchDeleteDataWithAuth = (uri) => {
-  return api
-    .delete(uri, { headers: authHeader() })
-    .catch((error) => {
-      console.error('AUTH DELETE error:', uri, error.message);
-      throw error;
-    });
+  return api.delete(uri, { headers: authHeader() }).catch((error) => {
+    console.error('AUTH DELETE error:', uri, error.message);
+    throw error;
+  });
 };
 
 /**

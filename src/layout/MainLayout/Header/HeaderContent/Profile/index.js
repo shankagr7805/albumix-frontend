@@ -54,13 +54,14 @@ const Profile = () => {
   // fetch profile once
   useEffect(() => {
     const token = sessionStorage.getItem('token');
-    if (!token) return; 
+    if (!token) return;
     fetchGetDataWithAuth('/auth/profile')
       .then((res) => setProfile(res.data))
       .catch(() => {
         sessionStorage.clear();
         window.location.href = '/login';
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleToggle = () => setOpen((prev) => !prev);
@@ -84,10 +85,7 @@ const Profile = () => {
           display: 'flex',
           alignItems: 'center',
           '&:hover': {
-            bgcolor:
-              theme.palette.mode === 'dark'
-                ? 'rgba(255,255,255,0.08)'
-                : 'action.hover'
+            bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'action.hover'
           }
         }}
       >
@@ -106,10 +104,7 @@ const Profile = () => {
           <Typography
             sx={{
               fontWeight: 600,
-              color:
-                theme.palette.mode === 'dark'
-                  ? theme.palette.common.white
-                  : theme.palette.text.primary
+              color: theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.text.primary
             }}
           >
             {email}
@@ -132,10 +127,7 @@ const Profile = () => {
               sx={{
                 width: 280,
                 boxShadow: theme.customShadows.z1,
-                bgcolor:
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.grey[900]
-                    : theme.palette.background.paper
+                bgcolor: theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.background.paper
               }}
             >
               <ClickAwayListener onClickAway={handleClose}>
@@ -143,9 +135,7 @@ const Profile = () => {
                   <CardContent sx={{ pb: 1 }}>
                     <Grid container alignItems="center" justifyContent="space-between">
                       <Stack direction="row" spacing={1} alignItems="center">
-                        <Avatar sx={{ bgcolor: theme.palette.primary.main }}>
-                          {email.charAt(0).toUpperCase()}
-                        </Avatar>
+                        <Avatar sx={{ bgcolor: theme.palette.primary.main }}>{email.charAt(0).toUpperCase()}</Avatar>
                         <Typography variant="h6">{email}</Typography>
                       </Stack>
 
@@ -155,24 +145,9 @@ const Profile = () => {
                     </Grid>
                   </CardContent>
 
-                  <Tabs
-                    value={value}
-                    onChange={(e, v) => setValue(v)}
-                    variant="fullWidth"
-                    sx={{ borderBottom: 1, borderColor: 'divider' }}
-                  >
-                    <Tab
-                      icon={<UserOutlined />}
-                      iconPosition="start"
-                      label="Profile"
-                      sx={{ textTransform: 'capitalize' }}
-                    />
-                    <Tab
-                      icon={<SettingOutlined />}
-                      iconPosition="start"
-                      label="Setting"
-                      sx={{ textTransform: 'capitalize' }}
-                    />
+                  <Tabs value={value} onChange={(e, v) => setValue(v)} variant="fullWidth" sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                    <Tab icon={<UserOutlined />} iconPosition="start" label="Profile" sx={{ textTransform: 'capitalize' }} />
+                    <Tab icon={<SettingOutlined />} iconPosition="start" label="Setting" sx={{ textTransform: 'capitalize' }} />
                   </Tabs>
 
                   <Box sx={{ p: 2 }}>

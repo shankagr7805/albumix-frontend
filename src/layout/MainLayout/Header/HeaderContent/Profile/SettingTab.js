@@ -6,11 +6,7 @@ import { useTheme } from '@mui/material/styles';
 import { List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 
 // assets
-import {
-  CommentOutlined,
-  LockOutlined,
-  UserOutlined
-} from '@ant-design/icons';
+import { CommentOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
 
 // ==============================|| HEADER PROFILE - SETTING TAB ||============================== //
 
@@ -32,18 +28,12 @@ const SettingTab = () => {
         p: 0,
         '& .MuiListItemIcon-root': {
           minWidth: 32,
-          color:
-            theme.palette.mode === 'dark'
-              ? theme.palette.grey[400]
-              : theme.palette.grey[600]
+          color: theme.palette.mode === 'dark' ? theme.palette.grey[400] : theme.palette.grey[600]
         }
       }}
     >
       {/* ACCOUNT SETTINGS */}
-      <ListItemButton
-        selected={selectedIndex === 0}
-        onClick={() => handleNavigate(0, '/profile/settings')}
-      >
+      <ListItemButton selected={selectedIndex === 0} onClick={() => handleNavigate(0, '/profile/settings')}>
         <ListItemIcon>
           <UserOutlined />
         </ListItemIcon>
@@ -51,10 +41,7 @@ const SettingTab = () => {
       </ListItemButton>
 
       {/* PRIVACY CENTER (future page) */}
-      <ListItemButton
-        selected={selectedIndex === 1}
-        onClick={() => handleNavigate(1, '/profile/privacy')}
-      >
+      <ListItemButton selected={selectedIndex === 1} onClick={() => handleNavigate(1, '/profile/privacy')}>
         <ListItemIcon>
           <LockOutlined />
         </ListItemIcon>
@@ -62,10 +49,7 @@ const SettingTab = () => {
       </ListItemButton>
 
       {/* FEEDBACK (future page) */}
-      <ListItemButton
-        selected={selectedIndex === 2}
-        onClick={() => handleNavigate(2, '/profile/feedback')}
-      >
+      <ListItemButton selected={selectedIndex === 2} onClick={() => handleNavigate(2, '/profile/feedback')}>
         <ListItemIcon>
           <CommentOutlined />
         </ListItemIcon>

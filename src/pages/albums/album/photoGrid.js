@@ -12,7 +12,7 @@ import EditOutlined from '@mui/icons-material/EditOutlined';
 import DownloadOutlined from '@mui/icons-material/DownloadOutlined';
 import CloseOutlined from '@mui/icons-material/CloseOutlined';
 import DeleteOutlineOutlined from '@mui/icons-material/DeleteOutlineOutlined';
-import LinearProgress from "@mui/material/LinearProgress";
+import LinearProgress from '@mui/material/LinearProgress';
 
 const useStyles = makeStyles((theme) => ({
   modal: {

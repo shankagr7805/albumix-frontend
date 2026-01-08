@@ -27,19 +27,10 @@ const Header = ({ open, handleDrawerToggle }) => {
         edge="start"
         sx={{
           ml: { xs: 0, lg: -2 },
-          color:
-            theme.palette.mode === 'dark'
-              ? theme.palette.common.white
-              : theme.palette.grey[900],
-          bgcolor:
-            theme.palette.mode === 'dark'
-              ? 'rgba(255,255,255,0.08)'
-              : theme.palette.grey[100],
+          color: theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.grey[900],
+          bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : theme.palette.grey[100],
           '&:hover': {
-            bgcolor:
-              theme.palette.mode === 'dark'
-                ? 'rgba(255,255,255,0.16)'
-                : theme.palette.grey[200]
+            bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.16)' : theme.palette.grey[200]
           }
         }}
       >

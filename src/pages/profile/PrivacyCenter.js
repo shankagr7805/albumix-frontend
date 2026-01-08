@@ -1,12 +1,4 @@
-import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  Divider,
-  Stack,
-  Alert
-} from '@mui/material';
+import { Box, Card, CardContent, Typography, Divider, Stack, Alert } from '@mui/material';
 
 const PrivacyCenter = () => {
   return (
@@ -84,9 +76,7 @@ const PrivacyCenter = () => {
               </ul>
             </Box>
 
-            <Alert severity="info">
-              This application does not share your data with any third-party services.
-            </Alert>
+            <Alert severity="info">This application does not share your data with any third-party services.</Alert>
           </Stack>
         </CardContent>
       </Card>

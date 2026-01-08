@@ -8,18 +8,21 @@ This project is designed with **scalability, clean UI, and resume-quality archit
 ## 🚀 Features
 
 ### 🔐 Authentication & Security
+
 - JWT-based authentication
 - Session-based login (sessionStorage)
 - Secure API calls with Authorization headers
 - Auto logout on browser close
 
 ### 📁 Album Management
+
 - Create, view, update, and delete albums
 - Upload multiple photos per album
 - View photos with thumbnails
 - Download photos securely
 
 ### ☁️ Cloudinary Integration
+
 - Upload images directly to Cloudinary via backend APIs
 - Multiple image upload support
 - Cloudinary gallery view
@@ -28,12 +31,14 @@ This project is designed with **scalability, clean UI, and resume-quality archit
 - File size validation on frontend
 
 ### 👤 User Profile
+
 - View profile details
 - Change password
 - Delete account
 - Role-based UI rendering
 
 ### 🎨 UI / UX
+
 - Dark / Light mode toggle
 - Material UI (MUI) based modern design
 - Responsive layout (desktop + mobile)
@@ -45,6 +50,7 @@ This project is designed with **scalability, clean UI, and resume-quality archit
 ## 🛠 Tech Stack
 
 ### Frontend
+
 - **React**
 - **Material UI (MUI)**
 - **Axios**
@@ -52,6 +58,7 @@ This project is designed with **scalability, clean UI, and resume-quality archit
 - **React Router**
 
 ### Backend (Integrated)
+
 - Spring Boot
 - JWT Authentication
 - MySQL
@@ -87,11 +94,11 @@ albumix-frontend/
 
 ### 1️⃣ Install Dependencies
 
-```npm install```
+`npm install`
 
 ### 2️⃣ Start Development Server
 
-```npm start```
+`npm start`
 
 ---
 
@@ -99,11 +106,12 @@ albumix-frontend/
 
 - This frontend requires the Albumix Spring Boot Backend to be running.
 - Backend should expose APIs under:
-```/api/v2/**```
+  `/api/v2/**`
 
 ---
 
 ## ☁️ Cloudinary Flow (Frontend Perspective)
+
 - User selects image(s)
 - Frontend validates file size & type
 - Image sent to backend using multipart/form-data

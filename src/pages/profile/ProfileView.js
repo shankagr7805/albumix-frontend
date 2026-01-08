@@ -1,16 +1,5 @@
 import { useEffect, useState } from 'react';
-import {
-  Avatar,
-  Box,
-  Card,
-  CardContent,
-  Chip,
-  CircularProgress,
-  Divider,
-  Grid,
-  Stack,
-  Typography
-} from '@mui/material';
+import { Avatar, Box, Card, CardContent, Chip, CircularProgress, Divider, Grid, Stack, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { fetchGetDataWithAuth } from 'client/client';
 import MainCard from 'components/MainCard';
@@ -23,10 +12,7 @@ const ProfileView = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    Promise.all([
-      fetchGetDataWithAuth('/auth/profile'),
-      fetchGetDataWithAuth('/albums')
-    ])
+    Promise.all([fetchGetDataWithAuth('/auth/profile'), fetchGetDataWithAuth('/albums')])
       .then(([profileRes, albumsRes]) => {
         setProfile(profileRes.data);
         setAlbums(albumsRes.data || []);
@@ -35,6 +21,7 @@ const ProfileView = () => {
         console.error('Profile load error:', err);
       })
       .finally(() => setLoading(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // ---------- LOADER ----------
@@ -56,17 +43,10 @@ const ProfileView = () => {
   }
 
   // ---------- SAFE AUTHORITIES ----------
-  const authorities = Array.isArray(profile.authorities)
-    ? profile.authorities
-    : profile.authorities
-      ? [profile.authorities]
-      : [];
+  const authorities = Array.isArray(profile.authorities) ? profile.authorities : profile.authorities ? [profile.authorities] : [];
 
   const albumsCount = albums.length;
-  const photosCount = albums.reduce(
-    (total, album) => total + (album.photos?.length || 0),
-    0
-  );
+  const photosCount = albums.reduce((total, album) => total + (album.photos?.length || 0), 0);
 
   return (
     <MainCard sx={{ maxWidth: 900, mx: 'auto', mt: 4 }}>
@@ -99,21 +79,10 @@ const ProfileView = () => {
 
                 <Typography variant="subtitle2">Roles</Typography>
 
-                <Stack
-                  direction="row"
-                  spacing={1}
-                  flexWrap="wrap"
-                  justifyContent="center"
-                >
+                <Stack direction="row" spacing={1} flexWrap="wrap" justifyContent="center">
                   {authorities.length > 0 ? (
                     authorities.map((role, index) => (
-                      <Chip
-                        key={index}
-                        label={role.name || role}
-                        size="small"
-                        color="info"
-                        variant="outlined"
-                      />
+                      <Chip key={index} label={role.name || role} size="small" color="info" variant="outlined" />
                     ))
                   ) : (
                     <Typography variant="caption" color="text.secondary">
@@ -142,10 +111,7 @@ const ProfileView = () => {
                     sx={{
                       p: 2,
                       textAlign: 'center',
-                      bgcolor:
-                        theme.palette.mode === 'dark'
-                          ? theme.palette.grey[900]
-                          : theme.palette.grey[100]
+                      bgcolor: theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[100]
                     }}
                   >
                     <Typography variant="h4" fontWeight={600}>
@@ -162,10 +128,7 @@ const ProfileView = () => {
                     sx={{
                       p: 2,
                       textAlign: 'center',
-                      bgcolor:
-                        theme.palette.mode === 'dark'
-                          ? theme.palette.grey[900]
-                          : theme.palette.grey[100]
+                      bgcolor: theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[100]
                     }}
                   >
                     <Typography variant="h4" fontWeight={600}>

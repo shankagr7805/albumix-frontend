@@ -1,15 +1,5 @@
 import { useEffect, useState } from 'react';
-import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  Stack,
-  Button,
-  Divider,
-  CircularProgress,
-  Alert
-} from '@mui/material';
+import { Box, Card, CardContent, Typography, Stack, Button, Divider, CircularProgress, Alert } from '@mui/material';
 import { fetchGetDataWithAuth, fetchDeleteDataWithAuth } from 'client/client';
 import MainCard from 'components/MainCard';
 
@@ -28,13 +18,12 @@ const AccountSettings = () => {
         setError('Failed to load account details');
       })
       .finally(() => setLoading(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 🔥 Delete account
   const handleDeleteAccount = async () => {
-    const confirmed = window.confirm(
-      'This will permanently delete your account and all albums. Are you sure?'
-    );
+    const confirmed = window.confirm('This will permanently delete your account and all albums. Are you sure?');
 
     if (!confirmed) return;
 
@@ -93,9 +82,7 @@ const AccountSettings = () => {
               <Typography variant="subtitle2" color="text.secondary">
                 User ID
               </Typography>
-              <Typography variant="body1">
-                {profile.id}
-              </Typography>
+              <Typography variant="body1">{profile.id}</Typography>
             </Box>
 
             <Box>
@@ -103,21 +90,14 @@ const AccountSettings = () => {
                 Roles
               </Typography>
               <Typography variant="body1">
-                {Array.isArray(profile.authorities)
-                  ? profile.authorities.join(', ')
-                  : profile.authorities}
+                {Array.isArray(profile.authorities) ? profile.authorities.join(', ') : profile.authorities}
               </Typography>
             </Box>
           </Stack>
 
           <Divider sx={{ my: 3 }} />
 
-          <Button
-            variant="outlined"
-            color="error"
-            fullWidth
-            onClick={handleDeleteAccount}
-          >
+          <Button variant="outlined" color="error" fullWidth onClick={handleDeleteAccount}>
             Delete Account
           </Button>
         </CardContent>

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 // material-ui
@@ -18,24 +18,29 @@ const Breadcrumbs = ({ navigation, title, ...others }) => {
   const [main, setMain] = useState();
   const [item, setItem] = useState();
 
-  const getCollapse = (menu) => {
-    if (menu.children) {
-      menu.children.forEach((collapse) => {
-        if (collapse.type === 'collapse') {
-          getCollapse(collapse);
-        } else if (collapse.type === 'item' && location.pathname === collapse.url) {
-          setMain(menu);
-          setItem(collapse);
-        }
-      });
-    }
-  };
+  // ✅ FIX: useCallback to stabilize function reference
+  const getCollapse = useCallback(
+    (menu) => {
+      if (menu.children) {
+        menu.children.forEach((collapse) => {
+          if (collapse.type === 'collapse') {
+            getCollapse(collapse);
+          } else if (collapse.type === 'item' && location.pathname === collapse.url) {
+            setMain(menu);
+            setItem(collapse);
+          }
+        });
+      }
+    },
+    [location.pathname]
+  );
 
+  // ✅ FIX: correct dependencies
   useEffect(() => {
     navigation?.items?.forEach((menu) => {
       if (menu.type === 'group') getCollapse(menu);
     });
-  }, [location.pathname]);
+  }, [navigation?.items, getCollapse]);
 
   if (!item || item.breadcrumbs === false) return null;
 
@@ -48,14 +53,8 @@ const Breadcrumbs = ({ navigation, title, ...others }) => {
         px: 3,
         py: 2.5,
         borderRadius: 2,
-        bgcolor:
-          theme.palette.mode === 'dark'
-            ? theme.palette.grey[900]
-            : theme.palette.grey[100],
-        boxShadow:
-          theme.palette.mode === 'dark'
-            ? '0 0 0 1px rgba(255,255,255,0.05)'
-            : '0 0 0 1px rgba(0,0,0,0.05)'
+        bgcolor: theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[100],
+        boxShadow: theme.palette.mode === 'dark' ? '0 0 0 1px rgba(255,255,255,0.05)' : '0 0 0 1px rgba(0,0,0,0.05)'
       }}
       {...others}
     >
@@ -63,24 +62,12 @@ const Breadcrumbs = ({ navigation, title, ...others }) => {
         {/* BREADCRUMB */}
         <Grid item>
           <MuiBreadcrumbs aria-label="breadcrumb">
-            <Typography
-              component={Link}
-              to="/"
-              color="text.secondary"
-              variant="subtitle2"
-              sx={{ textDecoration: 'none' }}
-            >
+            <Typography component={Link} to="/" color="text.secondary" variant="subtitle2" sx={{ textDecoration: 'none' }}>
               Home
             </Typography>
 
             {main && main.title !== 'Home' && (
-              <Typography
-                component={Link}
-                to={main.url || '#'}
-                color="text.secondary"
-                variant="subtitle2"
-                sx={{ textDecoration: 'none' }}
-              >
+              <Typography component={Link} to={main.url || '#'} color="text.secondary" variant="subtitle2" sx={{ textDecoration: 'none' }}>
                 {main.title}
               </Typography>
             )}

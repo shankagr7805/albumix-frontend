@@ -28,9 +28,7 @@ const HeaderContent = () => {
       </Box>
 
       {/* Profile / Mobile menu */}
-      <Box sx={{ ml: 1 }}>
-        {!matchesXs ? <Profile /> : <MobileSection />}
-      </Box>
+      <Box sx={{ ml: 1 }}>{!matchesXs ? <Profile /> : <MobileSection />}</Box>
     </Box>
   );
 };

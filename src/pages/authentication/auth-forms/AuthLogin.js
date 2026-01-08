@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, TextField, Container } from '@mui/material';
-import {fetchPostData} from 'client/client';
-import {useNavigate} from 'react-router-dom';
+import { fetchPostData } from 'client/client';
+import { useNavigate } from 'react-router-dom';
 
 const AuthLogin = () => {
   const [email, setEmail] = useState('');
@@ -12,13 +12,13 @@ const AuthLogin = () => {
 
   useEffect(() => {
     const isLoggedin = sessionStorage.getItem('token');
-    if(isLoggedin) {
+    if (isLoggedin) {
       navigate('/');
-      window.location.reload()
+      window.location.reload();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  
   const validateEmail = () => {
     // Basic email format validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -45,26 +45,24 @@ const AuthLogin = () => {
       return;
     }
     // Add your login logic here
-    fetchPostData("/auth/token",{email,password})
-    .then((response) => {
-      const { token } = response.data;
-      setLoginError('');
-      sessionStorage.setItem('token', token);
-      navigate('/');
-      window.location.reload()
-
-      
-    }) .catch((error) => {
+    fetchPostData('/auth/token', { email, password })
+      .then((response) => {
+        const { token } = response.data;
+        setLoginError('');
+        sessionStorage.setItem('token', token);
+        navigate('/');
+        window.location.reload();
+      })
+      .catch((error) => {
         console.error('Login error:', error);
         // Handle other login errors
         setLoginError('An error occurred during login');
-  });
-
+      });
   };
 
   return (
     <Container component="main" maxWidth="xs">
-        <TextField
+      <TextField
         variant="outlined"
         margin="normal"
         fullWidth
@@ -74,7 +72,7 @@ const AuthLogin = () => {
         error={!!errors.email}
         helperText={errors.email}
       />
-        <TextField
+      <TextField
         variant="outlined"
         margin="normal"
         fullWidth
@@ -91,7 +89,6 @@ const AuthLogin = () => {
       {loginError && <p style={{ color: 'red' }}>{loginError}</p>}
     </Container>
   );
-
 };
 
 export default AuthLogin;

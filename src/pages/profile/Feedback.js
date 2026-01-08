@@ -1,14 +1,5 @@
 import { useState } from 'react';
-import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  TextField,
-  Button,
-  Stack,
-  Alert
-} from '@mui/material';
+import { Box, Card, CardContent, Typography, TextField, Button, Stack, Alert } from '@mui/material';
 
 const Feedback = () => {
   const [message, setMessage] = useState('');
@@ -43,11 +34,7 @@ const Feedback = () => {
           </Typography>
 
           <Stack spacing={2} mt={2}>
-            {submitted && (
-              <Alert severity="success">
-                Thank you for your feedback!
-              </Alert>
-            )}
+            {submitted && <Alert severity="success">Thank you for your feedback!</Alert>}
 
             {error && <Alert severity="error">{error}</Alert>}
 
@@ -61,11 +48,7 @@ const Feedback = () => {
               onChange={(e) => setMessage(e.target.value)}
             />
 
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleSubmit}
-            >
+            <Button variant="contained" color="primary" onClick={handleSubmit}>
               Submit Feedback
             </Button>
           </Stack>

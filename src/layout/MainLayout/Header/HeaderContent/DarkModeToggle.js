@@ -7,10 +7,7 @@ import { setDarkMode } from 'store/reducers/actions';
 const DarkModeToggle = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
-  const isDarkMode = useSelector(
-    (state) => state.theme.isDarkMode
-  );
-
+  const isDarkMode = useSelector((state) => state.theme.isDarkMode);
 
   const handleToggle = () => {
     dispatch(setDarkMode(!isDarkMode));
@@ -21,18 +18,10 @@ const DarkModeToggle = () => {
       <IconButton
         onClick={handleToggle}
         sx={{
-          color: isDarkMode
-            ? theme.palette.warning.light
-            : theme.palette.grey[600],
-          bgcolor:
-            theme.palette.mode === 'dark'
-              ? 'rgba(255,255,255,0.08)'
-              : 'grey.100',
+          color: isDarkMode ? theme.palette.warning.light : theme.palette.grey[600],
+          bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'grey.100',
           '&:hover': {
-            bgcolor:
-              theme.palette.mode === 'dark'
-                ? 'rgba(255,255,255,0.16)'
-                : 'grey.200'
+            bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.16)' : 'grey.200'
           }
         }}
       >

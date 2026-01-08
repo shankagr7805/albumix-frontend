@@ -13,4 +13,3 @@ const config = {
 
 export default config;
 export const drawerWidth = 260;
-

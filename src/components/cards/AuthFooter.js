@@ -17,38 +17,18 @@ const AuthFooter = () => {
         {/* LEFT */}
         <Typography variant="subtitle2" color="text.secondary">
           © {new Date().getFullYear()}&nbsp;
-          <Typography
-            component="span"
-            variant="subtitle2"
-            sx={{ fontWeight: 600, color: 'text.primary' }}
-          >
+          <Typography component="span" variant="subtitle2" sx={{ fontWeight: 600, color: 'text.primary' }}>
             Albumix
           </Typography>
         </Typography>
 
         {/* RIGHT */}
-        <Stack
-          direction={matchDownSM ? 'column' : 'row'}
-          spacing={matchDownSM ? 1 : 3}
-          textAlign={matchDownSM ? 'center' : 'inherit'}
-        >
-          <Typography
-            variant="subtitle2"
-            component={Link}
-            href="/about"
-            underline="hover"
-            color="text.secondary"
-          >
+        <Stack direction={matchDownSM ? 'column' : 'row'} spacing={matchDownSM ? 1 : 3} textAlign={matchDownSM ? 'center' : 'inherit'}>
+          <Typography variant="subtitle2" component={Link} href="/about" underline="hover" color="text.secondary">
             About
           </Typography>
 
-          <Typography
-            variant="subtitle2"
-            component={Link}
-            href="/privacy"
-            underline="hover"
-            color="text.secondary"
-          >
+          <Typography variant="subtitle2" component={Link} href="/privacy" underline="hover" color="text.secondary">
             Privacy Policy
           </Typography>
         </Stack>

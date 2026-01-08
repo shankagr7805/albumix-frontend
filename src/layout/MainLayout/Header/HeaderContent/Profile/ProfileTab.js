@@ -29,18 +29,12 @@ const ProfileTab = ({ handleLogout }) => {
         p: 0,
         '& .MuiListItemIcon-root': {
           minWidth: 32,
-          color:
-            theme.palette.mode === 'dark'
-              ? theme.palette.grey[400]
-              : theme.palette.grey[600]
+          color: theme.palette.mode === 'dark' ? theme.palette.grey[400] : theme.palette.grey[600]
         }
       }}
     >
       {/* EDIT PROFILE */}
-      <ListItemButton
-        selected={selectedIndex === 0}
-        onClick={() => handleNavigate(0, '/profile/edit')}
-      >
+      <ListItemButton selected={selectedIndex === 0} onClick={() => handleNavigate(0, '/profile/edit')}>
         <ListItemIcon>
           <EditOutlined />
         </ListItemIcon>
@@ -48,10 +42,7 @@ const ProfileTab = ({ handleLogout }) => {
       </ListItemButton>
 
       {/* VIEW PROFILE */}
-      <ListItemButton
-        selected={selectedIndex === 1}
-        onClick={() => handleNavigate(1, '/profile/view')}
-      >
+      <ListItemButton selected={selectedIndex === 1} onClick={() => handleNavigate(1, '/profile/view')}>
         <ListItemIcon>
           <UserOutlined />
         </ListItemIcon>

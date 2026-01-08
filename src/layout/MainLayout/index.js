@@ -1,5 +1,5 @@
-import { useEffect, useState, } from 'react';
-import { Outlet, useLocation} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 // material-ui
@@ -19,12 +19,7 @@ const MainLayout = () => {
   const matchDownLG = useMediaQuery(theme.breakpoints.down('lg'));
   const dispatch = useDispatch();
   const location = useLocation();
-  const hideBreadcrumbRoutes = [
-    '/profile/edit',
-    '/profile/view',
-    '/profile/settings',
-    '/profile/feedback'
-  ];
+  const hideBreadcrumbRoutes = ['/profile/edit', '/profile/view', '/profile/settings', '/profile/feedback'];
 
   const showBreadcrumb = !hideBreadcrumbRoutes.includes(location.pathname);
 

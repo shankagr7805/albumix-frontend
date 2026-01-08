@@ -19,18 +19,10 @@ const CloudinaryPage = () => {
 
       {image && (
         <Box sx={{ mt: 3 }}>
-          <img
-            src={image.secure_url}
-            alt="uploaded"
-            width={250}
-            style={{ borderRadius: 8 }}
-          />
+          <img src={image.secure_url} alt="uploaded" width={250} style={{ borderRadius: 8 }} />
 
           <Box sx={{ mt: 2 }}>
-            <CloudinaryDelete
-              publicId={image.public_id}
-              onDelete={() => setImage(null)}
-            />
+            <CloudinaryDelete publicId={image.public_id} onDelete={() => setImage(null)} />
           </Box>
         </Box>
       )}

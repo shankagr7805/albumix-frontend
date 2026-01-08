@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Button, TextField, Container } from '@mui/material';
-import {fetchPostData} from 'client/client';
+import { fetchPostData } from 'client/client';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -11,13 +11,13 @@ const AuthRegister = () => {
   const [loginError, setLoginError] = useState('');
   const navigate = useNavigate();
 
-
   useEffect(() => {
     const isLoggedIn = sessionStorage.getItem('token');
     if (isLoggedIn) {
       navigate('/');
-      window.location.reload()
-    } 
+      window.location.reload();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // The empty dependency array ensures that the effect runs only once, on mount
 
   const validateEmail = () => {
@@ -28,7 +28,7 @@ const AuthRegister = () => {
 
   const validatePassword = () => {
     // Basic password length validation
-    return (password.length >= 6) && (password.length <= 15);
+    return password.length >= 6 && password.length <= 15;
   };
 
   const handleLogin = async () => {
@@ -46,50 +46,48 @@ const AuthRegister = () => {
       return;
     }
     // Add your login logic here
-    fetchPostData("/auth/users/add",{email,password})
-    .then(() => {
-      setLoginError('');
-      navigate('/login');
-      window.location.reload()
-
-    }).catch((error) => {
+    fetchPostData('/auth/users/add', { email, password })
+      .then(() => {
+        setLoginError('');
+        navigate('/login');
+        window.location.reload();
+      })
+      .catch((error) => {
         console.error('Registeration error:', error);
         // Handle other login errors
         setLoginError('An error occurred during registeration');
-  });
-
+      });
   };
 
-    return (
-      <Container component="main" maxWidth="xs">
-          <TextField
-          variant="outlined"
-          margin="normal"
-          fullWidth
-          label="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          error={!!errors.email}
-          helperText={errors.email}
-        />
-          <TextField
-          variant="outlined"
-          margin="normal"
-          fullWidth
-          label="Password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          error={!!errors.password}
-          helperText={errors.password}
-        />
-          <Button variant="contained" color="primary" fullWidth onClick={handleLogin}>
-          Register
-        </Button>
-        {loginError && <p style={{ color: 'red' }}>{loginError}</p>}
-      </Container>
-    );
-
+  return (
+    <Container component="main" maxWidth="xs">
+      <TextField
+        variant="outlined"
+        margin="normal"
+        fullWidth
+        label="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        error={!!errors.email}
+        helperText={errors.email}
+      />
+      <TextField
+        variant="outlined"
+        margin="normal"
+        fullWidth
+        label="Password"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        error={!!errors.password}
+        helperText={errors.password}
+      />
+      <Button variant="contained" color="primary" fullWidth onClick={handleLogin}>
+        Register
+      </Button>
+      {loginError && <p style={{ color: 'red' }}>{loginError}</p>}
+    </Container>
+  );
 };
 
 export default AuthRegister;

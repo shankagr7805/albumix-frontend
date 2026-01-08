@@ -14,10 +14,7 @@ const DrawerContent = () => {
     <SimpleBar
       sx={{
         height: '100%',
-        backgroundColor:
-          theme.palette.mode === 'dark'
-            ? '#0b0f14'
-            : theme.palette.background.paper,
+        backgroundColor: theme.palette.mode === 'dark' ? '#0b0f14' : theme.palette.background.paper,
 
         '& .simplebar-content': {
           display: 'flex',
